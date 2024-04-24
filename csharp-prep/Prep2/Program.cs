@@ -6,7 +6,7 @@ class Program
     {
         Console.Write("What is your grade percentage? "); // PUT "Enter the grade"
         string answer = Console.ReadLine();
-        int percent = int.Parse(Console.ReadLine());
+        int percent = int.Parse(answer);
         
         string grade = "";
 
