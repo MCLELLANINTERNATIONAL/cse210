@@ -16,6 +16,7 @@ public class Journal
       Console.WriteLine($"Today's prompt: {entry._promptText}");
       Console.Write("Your response: ");
       entry._entryText = Console.ReadLine();
+      DateTime theCurrentTime = DateTime.Now;
       entry._date = DateTime.Now.ToShortDateString();
       _entries.Add(entry);
       Console.WriteLine("Congratulations! Your entry has been added to your journal!");
