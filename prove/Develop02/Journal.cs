@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-// Added object and method for daily scriptur to write enrty and display all 
+// Added object and method for daily scripture to write enrty and display all 
 
 public class Journal
 {
