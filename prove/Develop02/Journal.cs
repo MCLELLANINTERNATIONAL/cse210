@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 
 // Added object and method for daily scriptur to write enrty and display all 
+
 public class Journal
 {
     public List<Entry> _entries = new List<Entry>();
