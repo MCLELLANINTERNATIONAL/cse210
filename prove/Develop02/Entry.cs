@@ -16,6 +16,6 @@ public class Entry
     {
         Console.WriteLine($"{_date} : {_promptText}");
         Console.WriteLine(_entryText);
-        Console.WriteLine($"Scripture of the Day: {_dailyScripture}");
+        Console.WriteLine($"{_dailyScripture}");
     }
 }
