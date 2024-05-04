@@ -20,8 +20,8 @@ public class PromptGenerator
         "What did I do today for my personal self-care?",
         "What am I most grateful for today?",
         "If I could do one thing over again today, what would that be?",
-    };
-    public Random random = new Random();
+   };
+   public Random random = new Random();
 
    public string GetRandomPrompt()
    {
