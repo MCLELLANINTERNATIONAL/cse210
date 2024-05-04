@@ -1,8 +1,7 @@
-// Added Scripture Class for Journal Entry
-
 using System;
 using System. Collections.Generic;
 using System.IO;
+//DailyScripture class provides functionality to generate a random scripture for the day
 
 public class DailyScripture
 {
@@ -24,6 +23,7 @@ public class DailyScripture
 
     public Random _random = new Random();
 
+    // Method to get a random scripture from the list
     public string GetRandomScripture()
     {
         int index = _random.Next(_scriptures.Count);

@@ -36,7 +36,7 @@ public class Journal
 
     public void SaveToFile(string myJournal)
     {
-        // Loop through each item in _entries and save it in a file
+        // Loop through each item in _entries and save it in a file, added daily scripture
         try
         {
             using (StreamWriter outputFile = new StreamWriter(myJournal))
@@ -55,7 +55,7 @@ public class Journal
 
     public void LoadFromFile(string Program)
     {
-        // Loop through each line of the file and create Entry objects to put in
+        //Loop through each line of the file and create Entry objects to put in, added daily scripture
         try
         {
             _entries.Clear();
