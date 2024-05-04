@@ -1,8 +1,8 @@
 using System;
 using System. Collections.Generic;
 using System.IO;
-//DailyScripture class provides functionality to generate a random scripture for the day
 
+//DailyScripture class provides functionality to generate a random scripture for the day
 public class DailyScripture
 {
     private List<string> _scriptures = new List<string>
