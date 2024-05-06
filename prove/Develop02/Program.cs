@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
+//Added Creativity : Daily Scripture Class
+
 class Program
 {
     static void Main(string[] args)
@@ -29,10 +31,17 @@ class Program
                     journal.DisplayAll();
                     break;
                 case "3":
-                    journal.LoadFromFile("myJournal.txt");
+                    Console.WriteLine("What is the file name you want to Load to ?");
+                    string loadName = Console.ReadLine();
+                    journal.LoadFromFile(loadName);
+                    Console.WriteLine("Congragulations, your entry has been loaded!");
+
                     break;
                 case "4":
-                    journal.SaveToFile("myJournal.txt");
+                    Console.WriteLine("What is the file name you want to save to?");
+                    string fileName = Console.ReadLine();
+                    journal.SaveToFile(fileName);
+                    Console.WriteLine("Congragulations, your entry has been saved!");
                     break;
                 case "5":
                     Console.WriteLine("Exiting the Journal Program!");
