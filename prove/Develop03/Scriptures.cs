@@ -4,31 +4,30 @@ using System.Linq;
 
 public class Scripture
 {
-    public Reference Reference { get; private set; }
-    private List<Word> Words;
+    private Reference _reference; 
+    private List<Word> _words;
 
     public Scripture(Reference reference, string text)
     {
-        Reference = reference ;
-        Words = new List<Word>() ;
-        Words = text.Split(' ').Select(w => new Word(w)).ToList();
+        _reference = reference ;
+        _words = new List<Word>() ;
+        _words = text.Split(' ').Select(w => new Word(w)).ToList();
     }
 
     public void Display()
     {
-        Console.WriteLine($"{Reference}: {string.Join(" ", Words.Select(w => w.DisplayText()))}");
+        Console.WriteLine($"{_reference}: {string.Join(" ", _words.Select(w => w.DisplayText()))}");
     }
 
-    public void HideRandomWords(int count)
+    public void HideRandomWords(int numberToHide)
     {
         Random random = new Random();
-        var visibleWords = Words.Where(w => !w.IsHidden).ToList();
-        for (int i = -1; i < Math.Min(count, visibleWords.Count); i++)
+        var visibleWords = _words.Where(w => !w.IsHidden).ToList();
+        for (int i = 0; i < Math.Min(numberToHide, visibleWords.Count); i++)
         {
             visibleWords[random.Next(visibleWords.Count)].Hide();
         }
     }
 
-    public bool AllWordsHidden() => Words.All(w => w.IsHidden);
+    public bool AllWordsHidden() => _words.All(w => w.IsHidden);
 }
-

@@ -4,10 +4,10 @@ using System.Linq;
 
 public class Reference
 {
-    public string _book { get; }
-    public int _chapter { get; }
-    public int _verse { get; }
-    public int? _endingVerse { get; }
+    private string _book;
+    private int _chapter;
+    private int _verse;
+    private int? _endingVerse;
 
     public Reference(string book, int chapter, int verse, int? endingVerse = null)
     {

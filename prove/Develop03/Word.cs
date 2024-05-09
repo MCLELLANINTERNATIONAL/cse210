@@ -5,12 +5,13 @@ using System.Linq;
     
 public class Word
 {
-    public string Text { get; }
-    public bool IsHidden { get; private set; }
+    private string _text;
+    private bool _isHidden;
+    public bool IsHidden { get{return _isHidden;} private set{_isHidden = value;}}
 
     public Word(string text)
     {
-        Text = text;
+        _text = text;
         IsHidden = false;
     }
 
@@ -21,6 +22,6 @@ public class Word
 
     public string DisplayText()
     {
-        return IsHidden ? new string('_', Text.Length) : Text;
+        return IsHidden ? new string('_', _text.Length) : _text;
     }
 }
