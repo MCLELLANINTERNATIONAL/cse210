@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 
-// Added the Count of number of times you have done an entry for eah selection 
-// Added a display of how many seconds for each previous activity at the start of a new selection in program, as an inheritance in the base 'Activity" class.
+// Added the accumalatiom of the number count you have done per choice.
+// Added a display of how many seconds was inputed in the previous activity, at the start of a new selection, added as an inheritance in the base 'Activity" class.
+// Added random questions to be selected until they have all been used at least once in that session.
+
 class Program
 {
     static void Main(string[] args)
