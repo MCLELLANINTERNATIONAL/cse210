@@ -1,18 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 public class ReflectingActivity : Activity
 {
     private List<string> _prompts;
     private List<string> _questions;
 
+
     public ReflectingActivity()
     {
         _name = "Reflecting Activity";
         _description = "Helps you reflect on personal experiences and learnings.";
         InitializePromptsAndQuestions();
-        
-
+    }
+    private void InitializePromptsAndQuestions()
+    {    
         _prompts = new List<string>
         {
             "Think of a time when you stood up for someone else.",
@@ -35,20 +38,6 @@ public class ReflectingActivity : Activity
         };
     }
     
-    private void InitializePromptsAndQuestions()
-    {
-        _prompts = new List<string>
-        {
-            "Think of a time when you stood up for someone else.",
-            // Other prompts...
-        };
-        _questions = new List<string>
-        {
-            "Why was this experience meaningful to you?",
-            // Other questions...
-        };
-    }
-
     public string GetRandomPrompt()
     {
         Random random = new Random();
@@ -68,7 +57,7 @@ public class ReflectingActivity : Activity
         string prompt = GetRandomPrompt();
         Console.WriteLine(prompt);
         Console.WriteLine("Press enter to continue");
-        string input = Console.ReadLine();
+        Console.ReadLine();
     }
 
     public void DisplayQuestion()
@@ -80,13 +69,16 @@ public class ReflectingActivity : Activity
     public void Run()
     {
         DisplayStartingMessage();
+        string prompt = GetRandomPrompt();
         DisplayPrompt();
-        DateTime endTime = DateTime.Now.AddSeconds(_duration);
+        
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(_duration);
 
         while (DateTime.Now < endTime)
         {
             DisplayQuestion();
-            ShowSpinner(5);
+            ShowSpinner(5); //Display spinner for a brief pause
         }
         DisplayEndingMessage();
     }
