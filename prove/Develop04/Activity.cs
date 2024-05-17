@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 
+// Added the accumalatiom of the number count you have done per choice.
+// Added a display of how many seconds was inputed in the previous activity, at the start of a new selection, added as an inheritance in the base 'Activity" class.
+
 public class Activity
 {
     protected string _name;
