@@ -7,13 +7,21 @@ public class Activity
     protected string _name;
     protected string _description;
     protected int _duration;
-    
-    public Activity(){}
+    public static Dictionary<string, int> activityCount = new Dictionary<string, int>();
 
+    public Activity()
+    {
+        if (!activityCount.ContainsKey(this.GetType().Name))
+        {
+            activityCount[this.GetType().Name] = 0;
+        }
+    }
+        
     public void DisplayStartingMessage()
     {
+        activityCount[this.GetType().Name]++;
         Console.Clear();
-        Console.WriteLine($"Welcome to the {_name}");
+        Console.WriteLine($"Welcome to the {_name}. This has been run {activityCount[this.GetType().Name]} times.");
         Console.WriteLine(_description);
         Console.Write("Enter duration in seconds: ");
         _duration = int.Parse(Console.ReadLine() ?? "0");

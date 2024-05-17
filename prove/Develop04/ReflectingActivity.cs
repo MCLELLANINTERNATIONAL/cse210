@@ -10,6 +10,8 @@ public class ReflectingActivity : Activity
     {
         _name = "Reflecting Activity";
         _description = "Helps you reflect on personal experiences and learnings.";
+        InitializePromptsAndQuestions();
+        
 
         _prompts = new List<string>
         {
@@ -30,6 +32,20 @@ public class ReflectingActivity : Activity
             "What could you learn from this experience that applies to other situations?",
             "What did you learn about yourself through this experience?",
             "How can you keep this experience in mind in the future?",
+        };
+    }
+    
+    private void InitializePromptsAndQuestions()
+    {
+        _prompts = new List<string>
+        {
+            "Think of a time when you stood up for someone else.",
+            // Other prompts...
+        };
+        _questions = new List<string>
+        {
+            "Why was this experience meaningful to you?",
+            // Other questions...
         };
     }
 

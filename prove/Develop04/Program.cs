@@ -1,5 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Threading;
 
+// Added the Count of items in the listing program and 
+// Added a display of how many seconds for each previous activity at the start of a new selection in program, as an inheritance in the base 'Activity" class.
 class Program
 {
     static void Main(string[] args)
@@ -42,4 +46,3 @@ class Program
         while(choice !="4");
     }
 }
-
