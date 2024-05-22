@@ -4,16 +4,23 @@ class Program
 {
     static void Main(string[] args)
     {
-        List<Shape> shapes = new List<Shape>
-        {
-            new Square("Red", 3),
-            new Rectangle("Blue", 4, 5),
-            new Circle("Green", 2)
-        };
+        List<Shape> shapes = new List<Shape>();
+        
+        Square s1 =  new Square("Red", 3);
+        shapes.Add(s1);
 
-        foreach (Shape shape in shapes)
+        Rectangle s2 = new Rectangle("Blue", 4, 5);
+        shapes.Add(s2);
+
+        Circle s3 = new Circle("Green", 2);
+        shapes.Add(s3);
+
+        foreach (Shape s in shapes)
         {
-            Console.WriteLine($"Shape: {shape.GetType().Name}, Color: {shape.GetColor()}, Area: {shape.GetArea():F2}");
+            string color = s.GetColor();
+            double area = s.GetArea();
+
+            Console.WriteLine($"The {color} shape has an area of {area:F2}");
         }
     }
 }
