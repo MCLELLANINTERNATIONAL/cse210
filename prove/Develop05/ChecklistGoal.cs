@@ -17,6 +17,20 @@ public class ChecklistGoal : Goal
         _amountCompleted = 0;
     }
 
+    public static ChecklistGoal FromString(string details)
+    {
+        var parts = details.Split(',');
+        string name = parts[0];
+        string description = parts[1];
+        int points = int.Parse(parts[2]);
+        int target = int.Parse(parts[3]);
+        int amountCompleted = int.Parse(parts[4]);
+        int bonus = int.Parse(parts[5]);
+        var goal = new ChecklistGoal(name, description, points, target, bonus);
+        goal._amountCompleted = amountCompleted;
+        return goal;
+    }
+
     public override bool IsComplete() => _amountCompleted >= _target;
 
     public override void RecordEvent()
@@ -27,7 +41,7 @@ public class ChecklistGoal : Goal
             // Add bonus if completed
             if (_amountCompleted == _target)
             {
-                // bonus points could be added here
+                _points += _bonus;// bonus points added here
             }
         }
     }

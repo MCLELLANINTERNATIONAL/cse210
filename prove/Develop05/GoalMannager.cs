@@ -8,27 +8,37 @@ public class GoalManager
     private List<Goal> _goals = new List<Goal>();
     private int _score;
 
-   public List<Goal> GetGoals() => _goals;
+    public List<Goal> GetGoals() => _goals;
 
     public void AddGoal(Goal goal)
     {
         _goals.Add(goal);
+        UpdateScore(goal);
     }
 
     public void RecordGoalEvent(int goalIndex)
     {
         if (goalIndex >= 0 && goalIndex < _goals.Count)
         {
-            _goals[goalIndex].RecordEvent();
-            UpdateScore(_goals[goalIndex]);
+            // Assuming that RecordEvent method in Goal might need access to GoalManager
+            _goals[goalIndex].RecordEvent(this);
         }
+        else
+        {
+            throw new ArgumentException("Invalid goal index.");
+        }
+    }
+
+    public void AddPoints(int points)
+    {
+        _score += points;
     }
 
     private void UpdateScore(Goal goal)
     {
         if (goal.IsComplete())
         {
-            _score += goal.Points; // Assuming there's a Points property in Goal
+            _score += goal.Points; // 
         }
     }
 

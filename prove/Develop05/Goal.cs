@@ -17,7 +17,7 @@ public abstract class Goal
     }
 
     public abstract bool IsComplete();
-    public abstract void RecordEvent();
+    public abstract void RecordEvent(GoalManager manager);
     public abstract string GetDetailsString();
     public abstract string GetStringRepresentation();
 }
