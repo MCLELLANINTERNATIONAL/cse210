@@ -33,7 +33,7 @@ public class ChecklistGoal : Goal
 
     public override bool IsComplete() => _amountCompleted >= _target;
 
-    public override void RecordEvent()
+    public override void RecordEvent(GoalManager manager)
     {
         if (_amountCompleted < _target)
         {

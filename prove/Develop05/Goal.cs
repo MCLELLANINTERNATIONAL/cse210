@@ -16,6 +16,12 @@ public abstract class Goal
         _points = points;
     }
 
+    public int Points
+    {
+        get { return _points; }
+        protected set { _points = value; }  // Protected setter to allow modification within derived classes
+    }
+    
     public abstract bool IsComplete();
     public abstract void RecordEvent(GoalManager manager);
     public abstract string GetDetailsString();
