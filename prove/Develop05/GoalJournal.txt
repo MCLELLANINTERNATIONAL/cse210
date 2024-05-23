@@ -1,0 +1,2 @@
+SimpleGoal:Walk for 30 min each day for a week.,test,20
+EternalGoal:2,Scriptures,50

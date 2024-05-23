@@ -16,10 +16,13 @@ public class SimpleGoal : Goal
     public static SimpleGoal FromString(string details)
     {
         var parts = details.Split(',');
+        if (parts.Length < 4) return null; // Ensure there are enough parts
+
         string name = parts[0];
         string description = parts[1];
-        int points = int.Parse(parts[2]);
-        bool isComplete = bool.Parse(parts[3]);
+        if (!int.TryParse(parts[2], out int points)) return null; // Safe parsing
+        if (!bool.TryParse(parts[3], out bool isComplete)) return null; // Safe parsing
+
         var goal = new SimpleGoal(name, description, points);
         goal._isComplete = isComplete;
         return goal;
@@ -29,30 +32,14 @@ public class SimpleGoal : Goal
 
     public override void RecordEvent(GoalManager manager)
     {
-        _isComplete = true;
+        if (!_isComplete) // Only mark complete and add points if not already completed
+        {
+            _isComplete = true;
+            manager.AddPoints(this.Points); // Assuming points should be added on completion
+        }
     }
 
     public override string GetDetailsString() => $"SimpleGoal: {_shortName}, Complete: {_isComplete}";
 
-    public override string GetStringRepresentation() => $"SimpleGoal:{_shortName},{_description},{_points}";
- 
-    /*public override bool IsComplete()
-    { 
-        return _isComplete;
-    }
-
-    public override void RecordEvent()
-    {
-        _isComplete = true;
-    }
-
-    public override string GetDetailsString()
-    {
-        return $"Complete: {_isComplete}";
-    }
-
-    public override string GetStringRepresentation()
-    {
-       return $"SimpleGoal:{_shortName},{_description},{_points}";
-    }*/
+    public override string GetStringRepresentation() => $"SimpleGoal:{_shortName},{_description},{_points},{_isComplete}";
 }
