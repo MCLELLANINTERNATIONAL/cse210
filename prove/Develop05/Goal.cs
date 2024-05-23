@@ -16,14 +16,24 @@ public abstract class Goal
         _points = points;
     }
 
+    protected Goal(){}
+
     public int Points
     {
         get { return _points; }
         protected set { _points = value; }  // Protected setter to allow modification within derived classes
     }
     
-    public abstract bool IsComplete();
-    public abstract void RecordEvent(GoalManager manager);
-    public abstract string GetDetailsString();
+    public virtual bool IsComplete()
+    {
+        return false;
+    }
+
+    public abstract int RecordEvent();
+    public virtual string GetDetailsString()
+    {
+        char tick = IsComplete() ? 'X' : ' ';
+        return $"[{tick}] {_shortName} {_description}";
+    }
     public abstract string GetStringRepresentation();
 }

@@ -8,6 +8,7 @@ public class ChecklistGoal : Goal
     private int _target;
     private int _amountCompleted;
     private int _bonus;
+    private bool _isComplete;
 
     public ChecklistGoal(string name, string description, int points, int target, int bonus)
         : base(name, description, points)
@@ -15,38 +16,42 @@ public class ChecklistGoal : Goal
         _target = target;
         _bonus = bonus;
         _amountCompleted = 0;
+        _isComplete = false;
     }
 
-    public static ChecklistGoal FromString(string details)
+    public ChecklistGoal(string details)
     {
         var parts = details.Split(',');
-        string name = parts[0];
-        string description = parts[1];
-        int points = int.Parse(parts[2]);
-        int target = int.Parse(parts[3]);
-        int amountCompleted = int.Parse(parts[4]);
-        int bonus = int.Parse(parts[5]);
-        var goal = new ChecklistGoal(name, description, points, target, bonus);
-        goal._amountCompleted = amountCompleted;
-        return goal;
+        _shortName = parts[0];
+        _description = parts[1];
+        _points = int.Parse(parts[2]);
+        _amountCompleted = int.Parse(parts[3]);
+        _target = int.Parse(parts[4]);
+        _bonus = int.Parse(parts[5]);
+        _isComplete = bool.Parse(parts[6]);
     }
 
     public override bool IsComplete() => _amountCompleted >= _target;
 
-    public override void RecordEvent(GoalManager manager)
+    public override int RecordEvent()
     {
-        if (_amountCompleted < _target)
+        _amountCompleted++;
+        
+        if (_amountCompleted == _target)
         {
-            _amountCompleted++;
-            // Add bonus if completed
-            if (_amountCompleted == _target)
-            {
-                _points += _bonus;// bonus points added here
-            }
+            Console.WriteLine($"Congratulations you earned {_points + _bonus} points!");
+            _isComplete = true;
+            return _points += _bonus;// bonus points added here
         }
+        else
+            // PUT message
+            return _points;
     }
 
-    public override string GetDetailsString() => $"Completed {_amountCompleted}/{_target}";
+    public override string GetDetailsString()
+    {
+        return base.GetDetailsString() + $"-- Completed {_amountCompleted}/{_target}";
+    }
 
-    public override string GetStringRepresentation() => $"ChecklistGoal:{_shortName},{_description},{_points},{_target},{_bonus}";
+    public override string GetStringRepresentation() => $"ChecklistGoal:{_shortName},{_description},{_points},{_amountCompleted}{_target},{_bonus},{_isComplete}";
 }

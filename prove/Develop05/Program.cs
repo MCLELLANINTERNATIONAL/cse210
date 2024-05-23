@@ -24,23 +24,23 @@ class Program
             Console.WriteLine("6. Quit");
             Console.Write("What would you like to do? ");
             choice = Console.ReadLine();
-        switch (choice)
+            switch (choice)
             {
                 case "1":
-                    AddGoal(goalManager);
+                    goalManager.AddGoal();
                     break;
                 case "2":
-                    RecordGoalEvent(goalManager);
+                    goalManager.RecordGoalEvent();
                     break;
                 case "3":
-                    DisplayGoals(goalManager);
+                    goalManager.DisplayGoals();
                     break;
                 case "4":
-                    LoadGoals(goalManager);
+                    goalManager.LoadGoals();
                     Console.WriteLine("Congratulations, your goals have been loaded!");
                     break;
                 case "5":
-                    SaveGoals(goalManager);
+                    goalManager.SaveGoals();
                     Console.WriteLine("Congratulations, your goals have been saved!");
                     break;
                 case "6":
@@ -52,77 +52,5 @@ class Program
             }
             Console.WriteLine();
         } while (choice != "6");
-    }
-
-    static void AddGoal(GoalManager goalManager)
-    {
-        Console.WriteLine("Select Type of Goal:");
-        Console.WriteLine("1. Simple Goal");
-        Console.WriteLine("2. Eternal Goal");
-        Console.WriteLine("3. Checklist Goal");
-        Console.Write("Choice: ");
-        int type = Convert.ToInt32(Console.ReadLine());
-
-        Console.Write("Enter Short Name for the Goal: ");
-        string name = Console.ReadLine();
-        Console.Write("Enter Description: ");
-        string description = Console.ReadLine();
-        Console.Write("Enter Points Value: ");
-        int points = Convert.ToInt32(Console.ReadLine());
-
-        Goal goal = null;
-        switch (type)
-        {
-            case 1:
-                goal = new SimpleGoal(name, description, points);
-                break;
-            case 2:
-                goal = new EternalGoal(name, description, points);
-                break;
-            case 3:
-                Console.Write("Enter Target Number: ");
-                int target = Convert.ToInt32(Console.ReadLine());
-                Console.Write("Enter Bonus Points: ");
-                int bonus = Convert.ToInt32(Console.ReadLine());
-                goal = new ChecklistGoal(name, description, points, target, bonus);
-                break;
-        }
-        if (goal != null)
-        {
-            goalManager.AddGoal(goal);
-            Console.WriteLine("Goal added successfully.");
-        }
-        else
-        {
-            Console.WriteLine("Failed to add goal. Please check the inputs and try again.");
-        }
-    }
-
-    static void RecordGoalEvent(GoalManager goalManager)
-    {
-        Console.Write("Enter the index of the goal to record: ");
-        int index = Convert.ToInt32(Console.ReadLine()) - 1;
-        goalManager.RecordGoalEvent(index);
-        Console.WriteLine("Event recorded.");
-    }
-
-    static void DisplayGoals(GoalManager goalManager)
-    {
-        Console.WriteLine("Current Goals:");
-        Console.WriteLine(goalManager.DisplayGoals());
-    }
-
-    static void LoadGoals(GoalManager goalManager)
-    {
-        Console.Write("Enter the file name from which to load goals: ");
-        string GoalJournal = Console.ReadLine();
-        goalManager.LoadGoals(GoalJournal);
-    }
-
-    static void SaveGoals(GoalManager goalManager)
-    {
-        Console.Write("Enter the file name to save goals to: ");
-        string GoalJournal = Console.ReadLine();
-        goalManager.SaveGoals(GoalJournal);
     }
 }

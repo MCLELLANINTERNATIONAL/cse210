@@ -14,11 +14,11 @@ public static class GoalFactory
         switch (type)
         {
             case "SimpleGoal":
-                return SimpleGoal.FromString(details);
+                return new SimpleGoal(details);
             case "EternalGoal":
-                return EternalGoal.FromString(details);
+                return new EternalGoal(details);
             case "ChecklistGoal":
-                return ChecklistGoal.FromString(details);
+                return new ChecklistGoal(details);
             default:
                 return null;
         }

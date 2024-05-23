@@ -8,21 +8,21 @@ public class EternalGoal : Goal
     public EternalGoal(string name, string description, int points)
         : base(name, description, points) { }
 
-    public static EternalGoal FromString(string details)
+    public EternalGoal(string details)
     {
-        var parts = details.Split(',');
-        string name = parts[0];
-        string description = parts[1];
-        int points = int.Parse(parts[2]);
-        return new EternalGoal(name, description, points);
+        parts = details.Split(',');
+        _shortName = parts[0];
+        _description = parts[1];
+        _points = int.Parse(parts[2]);
+        return new EternalGoal(_shortName, _description, _points);
     }
 
-    public override bool IsComplete() => false;  // Eternal goals never complete
-
-    public override void RecordEvent(GoalManager manager)
+    public override int RecordEvent()
     {
         // Points added to a user's total score here
-        manager.AddPoints(_points);
+        // PUT message
+        Console.WriteLine($"Congratulations you have earned {_points}!!");
+        return _points;
     }
 
     public override string GetDetailsString() => $"EternalGoal: {_shortName}, Ongoing";

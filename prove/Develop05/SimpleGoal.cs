@@ -13,33 +13,33 @@ public class SimpleGoal : Goal
             _isComplete = false;
         }
 
-    public static SimpleGoal FromString(string details)
+    public SimpleGoal(string details)
     {
         var parts = details.Split(',');
-        if (parts.Length < 4) return null; // Ensure there are enough parts
-
-        string name = parts[0];
-        string description = parts[1];
-        if (!int.TryParse(parts[2], out int points)) return null; // Safe parsing
-        if (!bool.TryParse(parts[3], out bool isComplete)) return null; // Safe parsing
-
-        var goal = new SimpleGoal(name, description, points);
-        goal._isComplete = isComplete;
-        return goal;
+        _shortName = parts[0];
+        _description = parts[1];
+        _points = int.Parse(parts[2]);
+        _isComplete = bool.Parse(parts[3]);
+        
     }
 
-    public override bool IsComplete() => _isComplete;
 
-    public override void RecordEvent(GoalManager manager)
+    public override bool IsComplete()
     {
-        if (!_isComplete) // Only mark complete and add points if not already completed
-        {
-            _isComplete = true;
-            manager.AddPoints(this.Points); // Assuming points should be added on completion
-        }
+    
+        return _isComplete;
     }
 
-    public override string GetDetailsString() => $"SimpleGoal: {_shortName}, Complete: {_isComplete}";
+    public override int RecordEvent()
+    {
+        _isComplete = true;
+        // PUT message
+        return _points;  // Return the number of points added  // Return 0 if no points are added because the goal was already complete
+    }   
 
-    public override string GetStringRepresentation() => $"SimpleGoal:{_shortName},{_description},{_points},{_isComplete}";
+    public override string GetStringRepresentation()
+    {
+        return $"SimpleGoal:{_shortName},{_description},{_points}";
+    }
+
 }
