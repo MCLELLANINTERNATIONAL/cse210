@@ -26,20 +26,18 @@ public class SimpleGoal : Goal
 
     public override bool IsComplete()
     {
-    
         return _isComplete;
     }
 
     public override int RecordEvent()
     {
         _isComplete = true;
-        // PUT message
         return _points;  // Return the number of points added  // Return 0 if no points are added because the goal was already complete
     }   
 
     public override string GetStringRepresentation()
     {
-        return $"SimpleGoal:{_shortName},{_description},{_points}";
+        return $"SimpleGoal:{_shortName},{_description},{_points},{_isComplete}" ;
     }
 
 }

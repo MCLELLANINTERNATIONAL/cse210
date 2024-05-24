@@ -8,7 +8,10 @@ public class GoalManager
     private List<Goal> _goals = new List<Goal>();
     private int _score;
 
-
+    public int Score()
+    {
+        return _score;
+    }
     public void RecordGoalEvent()
     {
         Console.Write("Select goal number: ");
@@ -35,7 +38,7 @@ public class GoalManager
         foreach (var goal in _goals)
         {
             //builder.AppendLine(goal.GetDetailsString());
-            text += counter + ") " + goal.GetDetailsString();
+            text += counter + ") " + goal.GetDetailsString()+"\n";
             counter++;
 
         }
@@ -45,7 +48,7 @@ public class GoalManager
 
     public void SaveGoals()
     {
-        Console.Write("Enter the file name from which to load goals: ");
+        Console.Write("Enter the file name from which to save goals: ");
         string filename = Console.ReadLine();
         using (StreamWriter sw = new StreamWriter(filename))
         {

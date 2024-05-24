@@ -44,7 +44,7 @@ public class ChecklistGoal : Goal
             return _points += _bonus;// bonus points added here
         }
         else
-            // PUT message
+            Console.WriteLine($"Congratulations you earned {_points}");
             return _points;
     }
 
@@ -53,5 +53,5 @@ public class ChecklistGoal : Goal
         return base.GetDetailsString() + $"-- Completed {_amountCompleted}/{_target}";
     }
 
-    public override string GetStringRepresentation() => $"ChecklistGoal:{_shortName},{_description},{_points},{_amountCompleted}{_target},{_bonus},{_isComplete}";
+    public override string GetStringRepresentation() => $"ChecklistGoal:{_shortName},{_description},{_points},{_amountCompleted},{_target},{_bonus},{_isComplete}";
 }

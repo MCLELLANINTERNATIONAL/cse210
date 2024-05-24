@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
+//Added Class GoalFactory
+
 class Program
 {
     static GoalManager goalManager = new GoalManager();
@@ -15,6 +17,7 @@ class Program
 
         do
         {
+            Console.WriteLine($"Score: {goalManager.Score()}");
             Console.WriteLine("Please select one of the following options:");
             Console.WriteLine("1. Add Goal");
             Console.WriteLine("2. Record Goal Event");
@@ -33,7 +36,7 @@ class Program
                     goalManager.RecordGoalEvent();
                     break;
                 case "3":
-                    goalManager.DisplayGoals();
+                    Console.WriteLine(goalManager.DisplayGoals());
                     break;
                 case "4":
                     goalManager.LoadGoals();
