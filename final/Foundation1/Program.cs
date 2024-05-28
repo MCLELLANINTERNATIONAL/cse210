@@ -26,6 +26,7 @@ class Program
         foreach (var video in videos) 
         {
             video.DisplayVideoInfo();
+            Console.WriteLine($"Total Comments: {video.GetNumberOfComments()}");
             Console.WriteLine();
         }
     }
