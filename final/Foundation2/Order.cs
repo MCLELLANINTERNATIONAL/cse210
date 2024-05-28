@@ -43,5 +43,5 @@ public class Order
     public string GetShippingLabel()
     {
         return $"{_customer.GetName()}\n{_customer.GetAddress().GetFullAddress()}";
-    }
+   }
 }
