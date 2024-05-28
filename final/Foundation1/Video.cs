@@ -4,7 +4,7 @@ using System.Collections.Generic;
 class Video {
     protected string _title;
     protected string _author;
-    private int _length;
+    protected int _length;
     private List<Comment> comments = new List<Comment>();
 
     public Video(string title, string author, int length) {
