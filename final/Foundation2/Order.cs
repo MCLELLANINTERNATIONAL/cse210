@@ -35,7 +35,7 @@ public class Order
         StringBuilder sb = new StringBuilder();
         foreach (var product in _products)
         {
-            sb.AppendLine($"ID: {product.GetName()} Product: {product.GetProductId()}  ");
+            sb.AppendLine($"ID: {product.GetProductId()} Product: {product.GetName()}  ");
         }
         return sb.ToString();
     }

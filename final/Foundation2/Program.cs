@@ -14,17 +14,17 @@ class Program
         var customer3 = new Customer("Peter Wannenburg", addressUK);
 
         var order1 = new Order(customer1);
-        order1.AddProduct(new Product("W123", "Chair", 3.50m, 10));
-        order1.AddProduct(new Product("G456", "Table", 5.00m, 5));
+        order1.AddProduct(new Product("Chair", "W123", 3.50m, 10));
+        order1.AddProduct(new Product( "Table", "G456",5.00m, 5));
 
         var order2 = new Order(customer2);
-        order2.AddProduct(new Product("G456", "Table", 5.00m, 2));
-        order2.AddProduct(new Product("W123", "Chair", 3.50m, 3));
+        order2.AddProduct(new Product("Table", "G456", 5.00m, 2));
+        order2.AddProduct(new Product("Chair", "W123", 3.50m, 3));
 
         var order3 = new Order(customer3);
-        order3.AddProduct(new Product("W123","Chair",  3.50m, 3));
-        order3.AddProduct(new Product("S234", "Cover", 1.50m, 3));
-        order3.AddProduct(new Product("G456", "Table", 5.00m, 2));
+        order3.AddProduct(new Product("Chair", "W123", 3.50m, 3));
+        order3.AddProduct(new Product("Cover", "S234", 1.50m, 3));
+        order3.AddProduct(new Product("Table", "G456", 5.00m, 2));
 
         Console.WriteLine("\nOrder 1:");
         Console.WriteLine("Total Cost: $" + order1.CalculateTotalCost());
