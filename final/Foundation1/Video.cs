@@ -22,7 +22,7 @@ class Video {
     }
 
     public void DisplayVideoInfo() {
-        Console.WriteLine($"Title: {_title}, Author: {_author}, Length: {_length} seconds");
+        Console.WriteLine($"\nTitle: {_title}, Author: {_author}, Length: {_length} seconds");
         Console.WriteLine("Comments:");
         foreach (var comment in comments) {
             Console.WriteLine($"- {comment.GetName()}: {comment.GetText()}");
