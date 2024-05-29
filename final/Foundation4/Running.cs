@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 public class Running : Activity
 {
-    private double distance; // Distance in kilometers
+    protected double _distance; // Distance in kilometers
 
     public Running(DateTime date, int durationInMinutes, double distance)
         : base(date, durationInMinutes)
     {
-        this.distance = distance;
+        _distance = distance;
     }
 
-    public override double GetDistance() => distance;
+    public override double GetDistance() => _distance;
 
-    public override double GetSpeed() => (distance / DurationInMinutes) * 60;
+    public override double GetSpeed() => (_distance / DurationInMinutes) * 60;
 
-    public override double GetPace() => DurationInMinutes / distance;
+    public override double GetPace() => DurationInMinutes / _distance;
 }

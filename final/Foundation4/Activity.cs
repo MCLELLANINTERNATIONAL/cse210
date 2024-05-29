@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 public abstract class Activity
 {
-    private DateTime date;
-    private int durationInMinutes; // Duration of the activity in minutes
+    protected DateTime _date;
+    protected int _durationInMinutes; // Duration of the activity in minutes
 
     public Activity(DateTime date, int durationInMinutes)
     {
-        this.date = date;
-        this.durationInMinutes = durationInMinutes;
+        _date = date;
+        _durationInMinutes = durationInMinutes;
     }
 
-    public DateTime Date => date;
-    public int DurationInMinutes => durationInMinutes;
+    public DateTime Date => _date;
+    public int DurationInMinutes => _durationInMinutes;
 
     // Abstract methods for getting the distance, speed, and pace
     public abstract double GetDistance();
@@ -23,6 +23,6 @@ public abstract class Activity
     // Virtual method for generating a summary of the activity
     public virtual string GetSummary()
     {
-        return $"{date:dd MMM yyyy} - {GetType().Name} ({durationInMinutes} min) - Distance: {GetDistance():0.0} km, Speed: {GetSpeed():0.0} kph, Pace: {GetPace():0.0} min per km";
+        return $"{_date:dd MMM yyyy} - {GetType().Name} ({_durationInMinutes} min) - Distance: {GetDistance():0.0} km, Speed: {GetSpeed():0.0} kph, Pace: {GetPace():0.0} min per km";
     }
 }
