@@ -52,6 +52,5 @@ class Program
         Console.WriteLine("\nShipping Label:");
         Console.WriteLine("---------------------------");
         Console.WriteLine(order3.GetShippingLabel());
-    }
-    
+    }  
 }
