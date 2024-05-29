@@ -14,7 +14,7 @@ class Program
         foreach (Event evt in events)
         {
             // Print Standard Details
-            Console.WriteLine("Standard Details:");
+            Console.WriteLine("\nStandard Details:");
             Console.WriteLine(evt.GetStandardDetails());
             Console.WriteLine(); // Adding a blank line for better readability
 
