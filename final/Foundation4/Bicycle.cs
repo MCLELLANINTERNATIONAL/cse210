@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 
-public class Cycling : Activity
+public class Bicycle: Activity
 {
     protected double _speed; // Speed in kilometers per hour
 
-    public Cycling(DateTime date, int durationInMinutes, double speed)
+    public Bicycle(DateTime date, int durationInMinutes, double speed)
         : base(date, durationInMinutes)
     {
         _speed = speed;
